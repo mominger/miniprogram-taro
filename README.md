@@ -1,18 +1,35 @@
-# AirAsia (Taro3.0 Hooks TS)
+`node (>=12.20.2)` `npm (>=6.14.11)`
 
-# Start
+## Introduction
+A mini program base on Taro3.0, React Hooks, and TS.
 
-`node (>=12.20.2)`
-> Front-end Taro
+
+## Getting started
+
+```bash
+# clone the project
+git clone https://gitlab.airasiatech.com/aaset/communication/airasia-miniprogram-taro.git
+
+# enter the project directory
+cd airasia-miniprogram-taro
+
+# install dependency
+yarn
+
+# develop
+yarn run dev:weapp
 ```
-  git clone https://gitlab.airasiatech.com/wenbintan/airasia-miniprogram-taro.git
-  cd airasia-miniprogram-taro
-  npm install OR cnpm OR yarn
 
-  //run in mini program  
-  npm run dev:weapp OR yanr dev:weapp
-  
+Then open the dist directory in the WeChat Devtools
+
+## Build
+
+```bash
+
+# build for production environment
+yarn run build:weapp
+
 ```
-# Technology Stack
 
-Taro3.0  React16   sass  
+## Technology Stack
+> Taro3.0  React16  Sass  
