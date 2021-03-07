@@ -1,10 +1,10 @@
 {
-  "name": "airasia-miniprogram-taro",
+  "name": "test-taro",
   "version": "1.0.0",
   "private": true,
   "description": "",
   "templateInfo": {
-    "name": "default",
+    "name": "redux",
     "typescript": true,
     "css": "sass"
   },
@@ -34,13 +34,18 @@
     "ios >= 8"
   ],
   "author": "",
+  "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
     "@tarojs/components": "3.0.27",
     "@tarojs/runtime": "3.0.27",
     "@tarojs/taro": "3.0.27",
-    "@tarojs/react": "3.0.27",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "redux": "^4.0.0",
+    "react-redux": "^7.2.0",
     "react-dom": "^16.10.0",
+    "@tarojs/react": "3.0.27",
     "react": "^16.10.0"
   },
   "devDependencies": {

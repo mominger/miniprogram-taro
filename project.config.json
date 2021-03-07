@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "airasia-miniprogram-taro",
+  "projectname": "test-taro",
   "description": "",
   "appid": "touristappid",
   "setting": {

@@ -1,6 +1,6 @@
 const config = {
-  projectName: 'airasia-miniprogram-taro',
-  date: '2021-2-25',
+  projectName: 'test-taro',
+  date: '2021-3-8',
   designWidth: 750,
   deviceRatio: {
     640: 2.34 / 2,
