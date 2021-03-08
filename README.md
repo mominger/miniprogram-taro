@@ -32,7 +32,7 @@ yarn build:weapp
 ```
 
 ## Technology Stack
-> Taro3.0  React16  Sass  
+> Taro3.0  React16  Sass     
 
 
 
