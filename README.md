@@ -17,7 +17,7 @@ cd airasia-miniprogram-taro
 yarn
 
 # develop
-yarn run dev:weapp
+yarn dev:weapp
 ```
 
 Then open the dist directory in the WeChat Devtools
@@ -27,7 +27,7 @@ Then open the dist directory in the WeChat Devtools
 ```bash
 
 # build for production environment
-yarn run build:weapp
+yarn build:weapp
 
 ```
 
