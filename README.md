@@ -30,6 +30,8 @@ Then open the dist directory in the WeChat Devtools
 yarn build:weapp
 
 ```
+## Compilation configuration
+Refer to this [configuration details](https://taro-docs.jd.com/taro/docs/config-detail), modify the configuration file under '/config' directory
 
 ## Technology Stack
 > Taro3.0  React16  Sass       
