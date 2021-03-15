@@ -1,5 +1,7 @@
+const path = require('path')
+
 const config = {
-  projectName: 'test-taro',
+  projectName: 'airasia-miniprogram-taro',
   date: '2021-3-8',
   designWidth: 750,
   deviceRatio: {
@@ -17,6 +19,9 @@ const config = {
     ],
     options: {
     }
+  },
+  sass: {
+    resource: path.join(__dirname, '../src/assets/styles/index.scss'),  //导入sass基础样式
   },
   framework: 'react',
   mini: {
@@ -68,3 +73,4 @@ module.exports = function (merge) {
   }
   return merge({}, config, require('./prod'))
 }
+
