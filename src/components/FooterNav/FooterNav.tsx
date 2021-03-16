@@ -3,14 +3,14 @@ import React, { FC, useState, useEffect } from 'react'
 import { View, Image } from '@tarojs/components'
 import classnames from 'classnames'
 
-import msiteIcon from './images/logo-a.svg'
-import msiteActiveIcon from './images/logo-a-selected.svg'
-import discoverIcon from './images/bookings.svg'
-import discoverActiveIcon from './images/bookings-selected.svg'
-import orderIcon from './images/chat.svg'
-import orderActiveIcon from './images/chat-selected.svg'
-import profileIcon from './images/member.svg'
-import profileActiveIcon from './images/member-selected.svg'
+import homeIcon from './images/logo-a.svg'
+import homeActiveIcon from './images/logo-a-selected.svg'
+import bookingIcon from './images/bookings.svg'
+import bookingActiveIcon from './images/bookings-selected.svg'
+import chatIcon from './images/chat.svg'
+import chatActiveIcon from './images/chat-selected.svg'
+import memeberIcon from './images/member.svg'
+import memberActiveIcon from './images/member-selected.svg'
 
 import './FooterNav.scss'
 
@@ -30,29 +30,29 @@ const FooterNav: FC = () => {
       id: 0,
       name: '首页',
       path: '/pages/index/index',
-      icon: msiteIcon,
-      active_icon: msiteActiveIcon,
+      icon: homeIcon,
+      active_icon: homeActiveIcon,
     },
     {
       id: 1,
       name: '我的预订',
       path: '',
-      icon: discoverIcon,
-      active_icon: discoverActiveIcon,
+      icon: bookingIcon,
+      active_icon: bookingActiveIcon,
     },
     {
       id: 2,
       name: '在线客服',
       path: '',
-      icon: orderIcon,
-      active_icon: orderActiveIcon,
+      icon: chatIcon,
+      active_icon: chatActiveIcon,
     },
     {
       id: 3,
       name: '会员',
       path: '',
-      icon: profileIcon,
-      active_icon: profileActiveIcon,
+      icon: memeberIcon,
+      active_icon: memberActiveIcon,
     },
   ]
 
