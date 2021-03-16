@@ -3,7 +3,6 @@ import to from 'await-to-js'
 import Server from './serve'
 import configStore from '../redux/store'
 import { removeToken } from '../redux/actions/user'
-import { H5 } from '../config/base'
 import {
   Ip,
   ILoginParams,
@@ -11,14 +10,7 @@ import {
   
 } from './interface'
 
-let BASEURL: string
-if (process.env.TARO_ENV === 'h5') {
-  BASEURL = '/api'
-} else {
-  //BASEURL = 'http://192.168.1.112:4000/api'
-  BASEURL = 'http://127.0.0.1:4000/api'
-
-}
+let BASEURL: string = 'http://127.0.0.1:4000/api'
 
 const store = configStore()
 
@@ -41,10 +33,7 @@ interface APIMessage<T> {
 class API extends Server {
   // 异常处理
   protected errMessage(error: Error | any, result: Result): Err | null {
-    // H5
-    if (H5 && !error) {
-      return null
-    } else if (result?.statusCode === 200) {
+    if (result?.statusCode === 200) {
       return null
     }
     const code = error?.status || result?.statusCode
