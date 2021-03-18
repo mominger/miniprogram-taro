@@ -36,14 +36,26 @@ const Index = (props) => {
   })
 
 
-
   //获取异步请求等
   useEffect(() => {
   }, [])
 
-  // 跳转到登录
-  const handleToLogin = () => {
-    //Taro.reLaunch({ url: '/pages/login/index' })
+  const handleToOther = () => {
+    Taro.navigateTo({
+      url: '/pages/page/path/xxx',
+      events: {
+        acceptDataFromOpenedPage: function(data) {
+          console.log(data)
+        },
+        someEvent: function(data) {
+          console.log(data)
+        }
+      },
+      success: function (res) {
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
+      }
+    })
+
   }
 
   //修改定位地址
@@ -80,7 +92,7 @@ const Index = (props) => {
             </View>
 
 
-            <Button onClick={handleToLogin}>
+            <Button onClick={handleToOther}>
               查询航班
           </Button>
         </View>
