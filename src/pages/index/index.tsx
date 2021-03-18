@@ -42,7 +42,7 @@ const Index = (props) => {
 
   const handleToOther = () => {
     Taro.navigateTo({
-      url: '/pages/page/path/xxx',
+      url: '/pages/page/other',
       events: {
         acceptDataFromOpenedPage: function(data) {
           console.log(data)
@@ -52,7 +52,7 @@ const Index = (props) => {
         }
       },
       success: function (res) {
-        res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'testdata' })
       }
     })
 
