@@ -3,7 +3,7 @@ import {
   SETTOKEN,
   REMOVETOKEN,
   CURRENTADDRESS,
-} from '../action-types'
+} from '../actionTypes'
 import { Reducers } from '../interface'
 
 interface Action<T, D = string> {
@@ -11,8 +11,9 @@ interface Action<T, D = string> {
   payload: D
 }
 
-// 用户token
+// 用户鉴权token
 type TOKENTYPE = typeof SETTOKEN | typeof REMOVETOKEN
+//从本地storage获取token
 const initToken: string = Taro.getStorageSync('token') || ''
 const token = (
   state = initToken,
@@ -29,12 +30,12 @@ const token = (
   }
 }
 
-// 当前地址
+//当前的定位地址
 type CURRENTADDRESSTYPE = typeof CURRENTADDRESS
 const initCurrentAddress = {
   id: '',
-  city: '', // 城市名称
-  address: '', //详细地址
+  city: '', // 城市
+  address: '', //地址
   latitude: '', // 纬度
   longitude: '', // 经度
 }

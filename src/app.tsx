@@ -8,8 +8,8 @@ import './app.scss'
 const store = configStore()
 
 const App = (props) => {
+  //初始化通过ip获取定位地址
   useEffect(() => {
-    // 通过ip获取定位
     const { currentAddress } = store.getState()
     if (!currentAddress.latitude && !currentAddress.longitude) {
       store.dispatch<any>(initCurrentAddress())

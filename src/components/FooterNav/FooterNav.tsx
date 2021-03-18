@@ -58,8 +58,8 @@ const FooterNav: FC = () => {
 
   useEffect(() => {
     // 获取路由路径
-    const current: Taro.Current = getCurrentInstance()
-    setPath(current.router.path)
+    //const current: Taro.Current = getCurrentInstance()
+    //setPath(current.router.path)
   }, [])
 
   // 跳转

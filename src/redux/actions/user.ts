@@ -4,7 +4,7 @@ import {
   SETTOKEN,
   CURRENTADDRESS,
   REMOVETOKEN,
-} from '../action-types'
+} from '../actionTypes'
 
 // 设置token
 export const setToken = (token: string) => {
@@ -18,13 +18,13 @@ export const removeToken = () => {
   return { type: REMOVETOKEN }
 }
 
-// 设置地址信息
+// 设置地址信息:以此定位到当前的航班站点
 export const setCurrentAddress = (address) => ({
   type: CURRENTADDRESS,
   payload: address,
 })
 
-// 初始化ip定位
+// 通过ip 初始化定位
 export const initCurrentAddress = () => {
   return async (dispatch) => {
     const { err, res } = await API.reqIpAddress()
@@ -48,4 +48,6 @@ export const initCurrentAddress = () => {
     } else {
     }
   }
+
+
 }
