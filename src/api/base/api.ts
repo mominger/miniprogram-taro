@@ -39,7 +39,7 @@ export class API extends Http {
     }
     return {
       code,
-      message: errInfo[code] ? errInfo[code] : '其他错误',
+      message: errInfo[code] ? errInfo[code] : '其他异常',
     }
   }
 }

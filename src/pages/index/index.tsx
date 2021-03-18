@@ -1,5 +1,7 @@
 // 首页
 import React, { useEffect} from 'react'
+import{useDidShow,useDidHide,useReady}from'@tarojs/taro'
+
 import { Text,View,Image,Button,Input } from '@tarojs/components'
 
 import FooterNav from '../../components/FooterNav/FooterNav'
@@ -13,13 +15,26 @@ import {
 
 import './index.scss'
 
-const Index = () => {
+const Index = (props) => {
 
   const dispatch = useDispatch()
   // 当前地址
   const { currentAddress} = useSelector(
     (state: Reducers) => state
   )
+
+  console.info(props)
+
+  useReady(() => {
+    console.log('Index page....onReady')
+  })
+  useDidShow(() => {
+    console.log('Index page....componentDidShow')
+  })
+  useDidHide(() => {
+    console.log('Index page....componentDidHide')
+  })
+
 
 
   //获取异步请求等
