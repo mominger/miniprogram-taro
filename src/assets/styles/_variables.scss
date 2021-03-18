@@ -4,7 +4,7 @@ $body-font-size: 28px !default;
 $body-font-famify: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular,
   'Hiragino Sans GB', 'Microsoft Yahei', sans-serif !default;
 
-// 字体颜色
+// 字体color
 $white-color: #ffffff !default;
 $black-color: #000000 !default;
 $orange-color: #ff4b33 !default;
@@ -16,7 +16,7 @@ $color-777: #777777 !default;
 $color-999: #999999 !default;
 $color-ddd:#dddddd !default;
 
-// 字体大小
+// 字体size
 $font-size-41: 41px !default;
 $font-size-38: 38px !default;
 $font-size-36: 36px !default;
@@ -29,10 +29,10 @@ $font-size-24: 24px !default;
 $font-size-22: 22px !default;
 $font-size-20: 20px !default;
 
-// 加粗
+//统一加粗
 $font-weight: 700 !default;
 
-// 渐变背景
+//背景颜色
 $defualt-background-image: linear-gradient(90deg, #0af, #0085ff) !default;
 $tag-background-image: linear-gradient(45deg, #0085ff, #0af) !default;
 $svip-background-image: linear-gradient(90deg, #ffefc4, #f3dda0) !default;

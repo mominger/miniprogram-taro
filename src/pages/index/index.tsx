@@ -11,7 +11,6 @@ import {
 } from '../../redux/actions/user'
 
 
-
 import './index.scss'
 
 const Index = () => {

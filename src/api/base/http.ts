@@ -1,20 +1,20 @@
 import { request, getStorageSync } from '@tarojs/taro'
 
-class Server {
-  protected ajax({
+class Http {
+  public ajax({
     url,
     data,
     method = 'GET',
     ...restParams
   }: Taro.RequestParams) {
-    // 用户token
+    // 鉴权token
     const Authorization: string = getStorageSync('token') || ''
-    // 判断请求类型
     let contentType: string
-    // GET请求
+    
+    // GET
     if (method === 'GET') {
       contentType = 'application/json'
-      // POST 请求
+      // POST
     } else if (method === 'POST') {
       contentType = 'application/x-www-form-urlencoded'
     }
@@ -43,4 +43,4 @@ class Server {
   }
 }
 
-export default Server
+export default Http

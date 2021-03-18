@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import API from '../../api'
+import UserAPI from '../../api/user'
 import {
   SETTOKEN,
   CURRENTADDRESS,
@@ -27,7 +27,7 @@ export const setCurrentAddress = (address) => ({
 // 通过ip 初始化定位
 export const initCurrentAddress = () => {
   return async (dispatch) => {
-    const { err, res } = await API.reqIpAddress()
+    const { err, res } = await UserAPI.reqIpAddress()
 
     if (err) {
       console.log(err)
@@ -35,12 +35,11 @@ export const initCurrentAddress = () => {
     }
 
     if (res.code === 0) {
-      const { city, latitude, longitude, recommend } = res.data
+      const { city, latitude, longitude } = res.data
       // 保存地址到redux
       dispatch(
         setCurrentAddress({
           city,
-          address: recommend,
           latitude,
           longitude,
         })
