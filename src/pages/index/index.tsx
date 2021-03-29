@@ -12,7 +12,6 @@ import { Reducers } from '../../redux/interface'
 import {
   setCurrentAddress,
 } from '../../redux/actions/user'
-import { setToken } from '../../redux/actions/user'
 
 
 import './index.scss'
@@ -61,15 +60,14 @@ const Index = (props) => {
   }
 
   const handleLogin = () => {
-    //test token
-    dispatch(setToken("xxxxxxaaaaa"))
+    //set token after login in
         Taro.showLoading({
-          title: '登录成功',
+          title: '跳向登录页',
           mask: true,
           success() {
             setTimeout(() => {
               Taro.hideLoading()
-              Taro.redirectTo({ url: '/pages/index/index' })
+              Taro.redirectTo({ url: '/pages/login/index' })
             }, 1000)
           }
         })
@@ -114,7 +112,7 @@ const Index = (props) => {
           </Button>
 
           <Button onClick={handleLogin}>
-              测试登录
+              模拟登录
           </Button>
         </View>
       {/* 底部导航 */}
