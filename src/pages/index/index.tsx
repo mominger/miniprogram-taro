@@ -1,4 +1,5 @@
 // 首页
+import Taro from '@tarojs/taro'
 import React, { useEffect} from 'react'
 import{useDidShow,useDidHide,useReady}from'@tarojs/taro'
 
@@ -11,6 +12,7 @@ import { Reducers } from '../../redux/interface'
 import {
   setCurrentAddress,
 } from '../../redux/actions/user'
+import { setToken } from '../../redux/actions/user'
 
 
 import './index.scss'
@@ -58,6 +60,21 @@ const Index = (props) => {
 
   }
 
+  const handleLogin = () => {
+    //test token
+    dispatch(setToken("xxxxxxaaaaa"))
+        Taro.showLoading({
+          title: '登录成功',
+          mask: true,
+          success() {
+            setTimeout(() => {
+              Taro.hideLoading()
+              Taro.redirectTo({ url: '/pages/index/index' })
+            }, 1000)
+          }
+        })
+  }
+
   //修改定位地址
   const changeAddress = (value) => {
     //更改定位地址
@@ -94,6 +111,10 @@ const Index = (props) => {
 
             <Button onClick={handleToOther}>
               查询航班
+          </Button>
+
+          <Button onClick={handleLogin}>
+              测试登录
           </Button>
         </View>
       {/* 底部导航 */}
