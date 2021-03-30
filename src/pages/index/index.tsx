@@ -116,7 +116,7 @@ const Index = (props) => {
           </Button>
         </View>
       {/* 底部导航 */}
-      <FooterNav />
+      <FooterNav title="testname"/>
     </View>
   )
 }

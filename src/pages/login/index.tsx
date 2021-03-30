@@ -33,7 +33,6 @@ const Login = () => {
 
     dispatch(setToken("xxxxxxaaaaa"))
 
-
     Taro.showLoading({
       title: '登录成功,可以查看token',
       mask: true,

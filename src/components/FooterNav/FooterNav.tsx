@@ -1,4 +1,4 @@
-import Taro, { getCurrentInstance } from '@tarojs/taro'
+import Taro, { useDidShow,useDidHide,useReady,useResize,getCurrentInstance } from '@tarojs/taro'
 import React, { FC, useState, useEffect } from 'react'
 import { View, Image } from '@tarojs/components'
 import classnames from 'classnames'
@@ -22,7 +22,28 @@ interface Bar {
   active_icon: string
 }
 
-const FooterNav: FC = () => {
+interface FooterNavProps {
+  title?: string
+}
+
+const FooterNav: FC<FooterNavProps> = (props) => {
+  const {title} = props
+  console.info("..props title:%s",title)
+
+  useReady(() => {
+    console.log('component FooterNav....onReady')
+  })
+  useResize(() => {
+    console.log('component FooterNav....onReady')
+  })
+  useDidShow(() => {
+    console.log('component FooterNav...componentDidShow')
+  })
+  useDidHide(() => {
+    console.log('component FooterNav....componentDidHide')
+  })
+
+
   // 路由地址
   const [path, setPath] = useState('')
   const bars: Bar[] = [
@@ -58,11 +79,11 @@ const FooterNav: FC = () => {
 
   useEffect(() => {
     // 获取路由路径
-    //const current: Taro.Current = getCurrentInstance()
-    //setPath(current.router.path)
+    const current: Taro.Current = getCurrentInstance()
+    setPath(current.router.path)
   }, [])
 
-  // 跳转
+  // 跳转到bar对应页面
   const handleGo = (bar: Bar) => {
     Taro.reLaunch({
       url: bar.path,
@@ -71,7 +92,7 @@ const FooterNav: FC = () => {
 
   return (
     <View className='footerbar'>
-      <View className='footerbar-mian'>
+      <View className='footerbar-main'>
         {bars.map((bar) => {
           return (
             <View
