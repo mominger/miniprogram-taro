@@ -7,6 +7,7 @@ import { InputProps } from '@tarojs/components/types/Input'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import { setToken } from '../../redux/actions/user'
 import './index.scss'
+import util from '../../utils/util'
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -33,6 +34,8 @@ const Login = () => {
 
     dispatch(setToken("xxxxxxaaaaa"))
 
+    util.setParentData({email})
+
     Taro.showLoading({
       title: '登录成功,可以查看token',
       mask: true,
@@ -42,6 +45,8 @@ const Login = () => {
         }, 1000)
       }
     })
+
+    Taro.navigateBack()
   }, [email, password])
 
   return (

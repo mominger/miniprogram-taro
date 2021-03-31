@@ -31,6 +31,12 @@ const Index = (props) => {
   })
   useDidShow(() => {
     console.log('Index page....componentDidShow')
+
+    let pages = Taro.getCurrentPages();
+    let currPage = pages[pages.length - 1]; // 获取当前页面
+    if (currPage.__data__.email) { // 获取值
+      console.info('...登录的邮箱:%s',currPage.__data__.email)
+    } 
   })
   useDidHide(() => {
     console.log('Index page....componentDidHide')
@@ -59,6 +65,10 @@ const Index = (props) => {
 
   }
 
+  const flushData = (data) => {
+    console.info('...flushData: '+data)
+  }
+
   const handleLogin = () => {
     //set token after login in
         Taro.showLoading({
@@ -67,7 +77,7 @@ const Index = (props) => {
           success() {
             setTimeout(() => {
               Taro.hideLoading()
-              Taro.redirectTo({ url: '/pages/login/index' })
+              Taro.navigateTo({ url: '/pages/login/index' })
             }, 1000)
           }
         })
