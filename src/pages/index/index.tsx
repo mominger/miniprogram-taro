@@ -83,11 +83,15 @@ const Index = (props) => {
     )
   }
 
+const getSubCmpInfo = (msg) => {
+        console.info("...获取子组件的数据....%s ",msg)
+}
+
   return (
     <View className='msite'>
         {/* 内容区 */}
         <View>
-          {/* 地址信息 */}
+          {/* ip定位 */}
           <View>
             <Text className="msite-navbar-title">当前ip定位的地址:{currentAddress.address}</Text>
             <View>
@@ -116,7 +120,7 @@ const Index = (props) => {
           </Button>
         </View>
       {/* 底部导航 */}
-      <FooterNav title="testname"/>
+      <FooterNav title="testname" callback = { getSubCmpInfo.bind(this) }/>
     </View>
   )
 }

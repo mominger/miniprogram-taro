@@ -24,10 +24,11 @@ interface Bar {
 
 interface FooterNavProps {
   title?: string
+  callback: (msg:string) => {}
 }
 
 const FooterNav: FC<FooterNavProps> = (props) => {
-  const {title} = props
+  const {title,callback} = props
   console.info("..props title:%s",title)
 
   useReady(() => {
@@ -85,6 +86,9 @@ const FooterNav: FC<FooterNavProps> = (props) => {
 
   // 跳转到bar对应页面
   const handleGo = (bar: Bar) => {
+    callback("本次跳转的地址: "+bar.path)
+    debugger
+
     Taro.reLaunch({
       url: bar.path,
     })
