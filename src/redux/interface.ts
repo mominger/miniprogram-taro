@@ -8,5 +8,6 @@ export interface Address {
 
 export interface Reducers {
   currentAddress: Address
-  token: string
+  token: string,
+  email: string
 }

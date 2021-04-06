@@ -4,12 +4,18 @@ import {
   SETTOKEN,
   CURRENTADDRESS,
   REMOVETOKEN,
+  SETEMAIL,
 } from '../actionTypes'
 
 // 设置token
 export const setToken = (token: string) => {
   Taro.setStorageSync('token', token)
   return { type: SETTOKEN, payload: token }
+}
+
+// 设置email
+export const setEmail = (email: string) => {
+  return { type: SETEMAIL, payload: email }
 }
 
 // 删除token

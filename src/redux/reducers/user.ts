@@ -3,6 +3,7 @@ import {
   SETTOKEN,
   REMOVETOKEN,
   CURRENTADDRESS,
+  SETEMAIL,
 } from '../actionTypes'
 import { Reducers } from '../interface'
 
@@ -52,8 +53,24 @@ const currentAddress = (
   }
 }
 
+type EMAILTYPE = typeof SETEMAIL
+const initEmail: string = ''
+const email = (
+  state = initEmail,
+  action: Action<EMAILTYPE, Reducers['email']>
+) => {
+  const { type, payload } = action
+  switch (type) {
+    case SETEMAIL:
+      return payload
+    default:
+      return state
+  }
+}
+
 
 export default {
   token,
   currentAddress,
+  email,
 }

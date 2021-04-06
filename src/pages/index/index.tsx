@@ -17,10 +17,13 @@ import {
 import './index.scss'
 
 const Index = (props) => {
+  console.info('....重新 Index render...')
+
 
   const dispatch = useDispatch()
+
   // 当前地址
-  const { currentAddress} = useSelector(
+  const { currentAddress,email} = useSelector(
     (state: Reducers) => state
   )
 
@@ -128,6 +131,10 @@ const getSubCmpInfo = (msg) => {
           <Button onClick={handleLogin}>
               模拟登录
           </Button>
+          
+          <View className="email-data">
+            <Text>登录后获取的email: {email}</Text>
+          </View>
         </View>
       {/* 底部导航 */}
       <FooterNav title="testname" callback = { getSubCmpInfo.bind(this) }/>

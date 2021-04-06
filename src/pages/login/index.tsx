@@ -1,11 +1,11 @@
 import Taro from '@tarojs/taro'
 import React, { useState, useCallback, useMemo } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
-import { View, Form, Input, Button, Navigator } from '@tarojs/components'
+import { Text,View, Form, Input, Button, Navigator } from '@tarojs/components'
 import classnames from 'classnames'
 import { InputProps } from '@tarojs/components/types/Input'
 import { BaseEventOrig } from '@tarojs/components/types/common'
-import { setToken } from '../../redux/actions/user'
+import { setToken,setEmail } from '../../redux/actions/user'
 import './index.scss'
 import util from '../../utils/util'
 
@@ -13,13 +13,31 @@ const Login = () => {
   const dispatch = useDispatch()
 
 
-  const [email, setEmail] = useState('')
+  const [email, setEmailValue] = useState('')
   // 密码
   const [password, setPassword] = useState('')
 
   const handleSetEmail = (e: BaseEventOrig<InputProps.inputEventDetail>) => {
     const { value } = e.detail
-    setEmail(value)
+    setEmailValue(value)
+  }
+
+  //注册
+  const handleRegister = () => {
+    Taro.navigateTo({
+      url: '/pages/register/index?id=1111',
+      events: {
+        // 获取打开页面传回来的数据
+        acceptDataFromOpenedPage: function(data) {
+          console.log(data)
+        },
+      },
+      success: function (res) {
+        //向被打开页面传送数据
+        res.eventChannel.emit('login', { data: '传递给打开的数据' })
+      }
+    })
+    
   }
 
   // 密码
@@ -28,11 +46,17 @@ const Login = () => {
     setPassword(value)
   }
 
+  Taro.navigateTo({ url: '/pages/profile/address/search/index' })
+
+
   // 登录
   const handleSubmit = useCallback(async () => {
     console.info("..获取的值 email:%s password:%s...",email,password)
 
     dispatch(setToken("xxxxxxaaaaa"))
+
+    dispatch(setEmail(email))
+
 
     util.setParentData({email})
 
@@ -77,13 +101,11 @@ const Login = () => {
           <Button className='submit' formType='submit'>
             登录
           </Button>
-          <Navigator
-            url='/pages/register/index'
-            openType='redirect'
-            className='register'
-          >
-             点此注册
-          </Navigator>
+
+          <View className="email-data" onClick={handleRegister}>
+            <Text>点此注册</Text>
+          </View>
+
         </Form>
       </View>
     </View>
