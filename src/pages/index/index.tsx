@@ -1,6 +1,6 @@
 // 首页
 import Taro from '@tarojs/taro'
-import React, { useEffect} from 'react'
+import React, { useEffect,useCallback} from 'react'
 import{useDidShow,useDidHide,useReady}from'@tarojs/taro'
 
 import { Text,View,Image,Button,Input } from '@tarojs/components'
@@ -50,7 +50,7 @@ const Index = (props) => {
   useEffect(() => {
   }, [])
 
-  const handleToOther = () => {
+  const handleToOther = useCallback(() => {
     Taro.navigateTo({
       url: '/pages/page/other',
       events: {
@@ -65,14 +65,13 @@ const Index = (props) => {
         res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'testdata' })
       }
     })
-
-  }
+  },[])
 
   const flushData = (data) => {
     console.info('...flushData: '+data)
   }
 
-  const handleLogin = () => {
+  const handleLogin = useCallback(() => {
     //set token after login in
         Taro.showLoading({
           title: '跳向登录页',
@@ -84,7 +83,7 @@ const Index = (props) => {
             }, 1000)
           }
         })
-  }
+  },[])
 
   //修改定位地址
   const changeAddress = (value) => {
