@@ -2,6 +2,8 @@
 import Taro from '@tarojs/taro'
 import React, { useEffect,useCallback} from 'react'
 import{useDidShow,useDidHide,useReady}from'@tarojs/taro'
+import {withErrorBoundary} from 'react-error-boundary'
+import Log from '../../utils/log'
 
 import { Text,View,Image,Button,Input } from '@tarojs/components'
 
@@ -141,4 +143,22 @@ const getSubCmpInfo = (msg) => {
   )
 }
 
-export default Index
+const ErrorFallback = ({error, resetErrorBoundary}) => {
+  return (
+    <View>
+        Error:
+        <View>
+          {error.message}
+        </View>
+    </View>
+  )
+}
+
+const ComponentWithErrorBoundary = withErrorBoundary(Index, {
+  FallbackComponent: ErrorFallback,
+  onError(error, info) {
+    Log.error(error  + info.componentStack)
+  },
+})
+
+export default ComponentWithErrorBoundary
