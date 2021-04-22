@@ -1,25 +1,21 @@
 Arguments: 
-  /Users/twb/.nvm/versions/node/v12.20.2/bin/node /Users/twb/.nvm/versions/node/v12.20.2/bin/yarn dev:weapp
+  /Users/twb/.nvm/versions/node/v12.22.1/bin/node /Users/twb/.nvm/versions/node/v12.22.1/bin/yarn
 
 PATH: 
-  /Users/twb/.rvm/gems/ruby-2.6.6/bin:/Users/twb/.rvm/gems/ruby-2.6.6@global/bin:/Users/twb/.rvm/rubies/ruby-2.6.6/bin:/Users/twb/.nvm/versions/node/v12.20.2/bin:/usr/local/Cellar/go/1.9.2/bin:/Users/twb/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/twb/.rvm/gems/ruby-2.6.6/bin:/Users/twb/.rvm/gems/ruby-2.6.6@global/bin:/Users/twb/.rvm/rubies/ruby-2.6.6/bin:/Users/twb/.nvm/versions/node/v12.20.2/bin:/usr/local/Cellar/go/1.9.2/bin:/Users/twb/bin:/Users/twb/.rvm/bin
+  /usr/local/apache-maven-3.6.3/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/bin:/usr/local/go/bin:/Users/twb/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/local/apache-maven-3.6.3/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/bin:/Users/twb/bin:/Users/twb/.rvm/gems/ruby-2.6.6/bin:/Users/twb/.rvm/gems/ruby-2.6.6@global/bin:/Users/twb/.rvm/rubies/ruby-2.6.6/bin:/Users/twb/.nvm/versions/node/v12.22.1/bin:/Users/twb/.rvm/bin:/Users/twb/Library/Android/sdk/tools:/Users/twb/Library/Android/sdk/platform-tools:/Users/twb/Library/Android/sdk/tools:/Users/twb/Library/Android/sdk/platform-tools
 
 Yarn version: 
   1.22.10
 
 Node version: 
-  12.20.2
+  12.22.1
 
 Platform: 
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/twb/VscodeProjects/airasir/airasia-miniprogram-taro/package.json: Unexpected string in JSON at position 191
-      at JSON.parse (<anonymous>)
-      at /Users/twb/.nvm/versions/node/v12.20.2/lib/node_modules/yarn/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/Users/twb/.nvm/versions/node/v12.20.2/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /Users/twb/.nvm/versions/node/v12.20.2/lib/node_modules/yarn/lib/cli.js:321:13
+  Error: https://registry.npm.taobao.org/@tarojs/react/download/@tarojs/react-3.0.27.tgz: unexpected end of file
+      at Zlib.zlibOnError [as onerror] (zlib.js:182:17)
 
 npm manifest: 
   {
@@ -31,7 +27,7 @@ npm manifest:
       "name": "redux",
       "typescript": true,
       "css": "sass"
-    }
+    },
     "scripts": {
       "build:weapp": "taro build --type weapp",
       "build:swan": "taro build --type swan",
