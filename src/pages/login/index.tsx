@@ -46,8 +46,6 @@ const Login = () => {
     setPassword(value)
   }
 
-  Taro.navigateTo({ url: '/pages/profile/address/search/index' })
-
 
   // 登录
   const handleSubmit = useCallback(async () => {

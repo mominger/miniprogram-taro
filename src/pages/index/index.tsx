@@ -52,7 +52,7 @@ const Index = (props) => {
 
   const handleToOther = useCallback(() => {
     Taro.navigateTo({
-      url: '/pages/page/other',
+      url: '/pages/other/index',
       events: {
         acceptDataFromOpenedPage: function(data) {
           console.log(data)
