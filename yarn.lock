@@ -1249,6 +1249,22 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
+"@i18n-chain/core@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.nlark.com/@i18n-chain/core/download/@i18n-chain/core-2.0.1.tgz#9d11e4c0e38cda815adb76364ebb81927522c021"
+  integrity sha1-nRHkwOOM2oFa23Y2TruBknUiwCE=
+  dependencies:
+    tslib "2.0.3"
+
+"@i18n-chain/react@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.nlark.com/@i18n-chain/react/download/@i18n-chain/react-2.0.1.tgz#8bc400e3ed74932bc15c1309ef5da6e4e3753761"
+  integrity sha1-i8QA4+10kyvBXBMJ712m5ON1N2E=
+  dependencies:
+    "@i18n-chain/core" "2.0.1"
+    hoist-non-react-statics "3.3.2"
+    tslib "2.0.3"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npm.taobao.org/@mrmlnc/readdir-enhanced/download/@mrmlnc/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -6844,7 +6860,7 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^3.3.2:
+hoist-non-react-statics@3.3.2, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha1-7OCsr3HWLClpwuxZ/v9CpLGoW0U=
@@ -13110,6 +13126,11 @@ tsconfig-paths@^3.9.0:
     json5 "^1.0.1"
     minimist "^1.2.0"
     strip-bom "^3.0.0"
+
+tslib@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npm.taobao.org/tslib/download/tslib-2.0.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
+  integrity sha1-jgdBrEX8DCJuWKF7/D5kubxsphw=
 
 tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"

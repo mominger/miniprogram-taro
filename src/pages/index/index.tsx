@@ -11,6 +11,8 @@ import FooterNav from '../../components/FooterNav/FooterNav'
 
 import { useSelector,useDispatch } from 'react-redux'
 import { Reducers } from '../../redux/interface'
+import I18n from '../../utils/i18'
+
 import {
   setCurrentAddress,
 } from '../../redux/actions/user'
@@ -21,6 +23,8 @@ import './index.scss'
 const Index = (props) => {
   console.info('....重新 Index render...')
 
+  const chain = I18n.use();
+  console.info("..name...",chain.home.name)
 
   const dispatch = useDispatch()
 
