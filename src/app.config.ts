@@ -4,6 +4,7 @@ export default {
     'pages/login/index',
     'pages/register/index',
     'pages/other/index',
+    'pages/testvant/index',
   ],
   window: {
     backgroundTextStyle: 'light',

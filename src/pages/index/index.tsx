@@ -90,6 +90,9 @@ const Index = (props) => {
           }
         })
   },[])
+  const handleVant = useCallback(() => {
+    Taro.navigateTo({ url: '/pages/testvant/index' })
+  },[])
 
   //修改定位地址
   const changeAddress = (value) => {
@@ -137,6 +140,10 @@ const getSubCmpInfo = (msg) => {
               模拟登录
           </Button>
           
+          <Button onClick={handleVant}>
+              测试Vant基础组件
+          </Button>
+
           <View className="email-data">
             <Text>登录后获取的email: {email}</Text>
           </View>

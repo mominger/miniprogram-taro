@@ -16,3 +16,11 @@ declare const process: {
     [key: string]: any;
   }
 }
+
+
+declare namespace JSX {
+	interface IntrinsicElements {
+		'van-button': any,
+    'van-calendar': any
+	}
+}
