@@ -17,7 +17,6 @@ declare const process: {
   }
 }
 
-
 declare namespace JSX {
 	interface IntrinsicElements {
 		'van-button': any,

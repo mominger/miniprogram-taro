@@ -1,74 +1,49 @@
-import Taro from '@tarojs/taro'
-import React, { Component } from 'react'
+import React, { useState,useCallback } from 'react'
 import { View, Text, Slot } from '@tarojs/components'
 import './index.scss'
 
-export default class TestVant extends Component {
+const TestVant = () => {
 
-  state = {
-    show: false,
-    date: ''
+  const [show, setShow] = useState(false)
+  const [endDate, setEndDate] = useState('')
+
+  const showCalendar = useCallback(() => {
+    setShow(true)
+  },[])
+
+  const formatDate = (date)=>{
+      date = new Date(date)
+      return `${date.getMonth() + 1}/${date.getDate()}`
   }
 
-  componentWillMount () { }
+  const closeCalendar = useCallback(() => {
+    setShow(false)
+  },[])
 
-  componentDidMount () { }
+  const onConfirm = useCallback((event) => {
+    setShow(false)
+    setEndDate(formatDate(event.detail[1]))
+  },[])
 
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  onReachBottom () {
-    console.log('===s=sdsds')
-  }
-
-  showCalendar = () => {
-    this.setState({
-      show: true
-    })
-  }
-
-  closeCalendar = () => {
-    this.setState({
-      show: false
-    })
-  }
-
-  formatDate (date) {
-    date = new Date(date)
-    return `${date.getMonth() + 1}/${date.getDate()}`
-  }
-
-  onConfirm = (event) => {
-    console.log(event)
-    this.setState({
-      show: false,
-      date: this.formatDate(event.detail)
-    })
-  }
-
-  render () {
-    const { show, date } = this.state
-    return (
-      <View className='index'>
-        <van-button type='primary' onClick={this.showCalendar}>显示日历</van-button>
-        <van-calendar
-          show={show}
-          showConfirm
-          type='range'
-          onClose={this.closeCalendar}
-          onConfirm={this.onConfirm}
-          >
-          <Slot name='title'>
-            <View>选择日期</View>
-          </Slot>
-        </van-calendar>
-        <View>
-          {date}
-        </View>
+  return (
+    <View className='index'>
+      <van-button type='primary' onClick={showCalendar}>显示日历</van-button>
+      <van-calendar
+        show={show}
+        showConfirm
+        type='range'
+        onClose={closeCalendar}
+        onConfirm={onConfirm}
+        >
+        <Slot name='title'>
+          <View>选择日期</View>
+        </Slot>
+      </van-calendar>
+      <View>
+        endDate: {endDate}
       </View>
-    )
-  }
+    </View>
+  )
 }
+
+export default TestVant
