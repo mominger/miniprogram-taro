@@ -1,0 +1,26 @@
+.msite {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+    .msite-navbar-title {
+      padding: 0 10px;
+      font-size: $font-size-34;
+      color: $black-color;
+      font-weight: $font-weight;
+      max-width: 80vw;
+    }
+
+  .image {
+    margin:50px 10px;
+    width:100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .email-data{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+  }
+}

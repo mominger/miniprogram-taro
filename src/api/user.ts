@@ -15,7 +15,7 @@ class UserAPI extends API {
     let [error, result] = await to(
       this.ajax({
         url: BASEURL + '/ip',
-        data: { key: '' },
+        data: { key: 'UNZBZ-MJUKS-W76OY-6SGXP-7TIFE-AXBA3' },
       })
     )
     const err = this.errMessage(error, result)

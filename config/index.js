@@ -15,7 +15,11 @@ const config = {
   defineConstants: {
   },
   alias: {
-    '@/vant': path.resolve(__dirname, '../src/components/vant-weapp/dist')
+    '@vant': path.resolve(__dirname, '../src/components/vant-weapp/dist'),
+    '@biz-kit': path.resolve(__dirname, '../src/biz-kit'),
+    '@store': path.resolve(__dirname, '../src/store'),
+    '@utils': path.resolve(__dirname, '../src/utils'),
+    '@components': path.resolve(__dirname, '../src/components'),
   },
   copy: {
     patterns: [

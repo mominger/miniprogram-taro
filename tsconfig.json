@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
+    "target": "esnext",
     "removeComments": false,
     "preserveConstEnums": true,
     "moduleResolution": "node",
@@ -13,7 +12,6 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "baseUrl": ".",
     "rootDir": ".",
     "jsx": "react",
     "jsxFactory": "React.createElement",
@@ -22,7 +20,15 @@
     "typeRoots": [
       "node_modules/@types",
       "global.d.ts"
-    ]
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["src/*"],
+      "@biz-kit/*": ["biz-kit/*"],
+      "@store/*": ["store/*"],
+      "@utils/*": ["utils/*"],
+      "@components/*": ["components/*"],
+    },
   },
   "exclude": [
     "node_modules",
