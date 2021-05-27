@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "esnext",
     "removeComments": false,
-    "preserveConstEnums": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "noImplicitAny": false,
@@ -10,7 +9,6 @@
     "outDir": "lib",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true,
     "sourceMap": true,
     "rootDir": ".",
     "jsx": "react",
@@ -21,10 +19,14 @@
       "node_modules/@types",
       "global.d.ts"
     ],
+    "strict": false,
     "baseUrl": "./src",
     "paths": {
       "*": ["src/*"],
+      "@biz-kit": ["biz-kit"],
       "@biz-kit/*": ["biz-kit/*"],
+      "@ui-kit": ["ui-kit"],
+      "@ui-kit/*": ["ui-kit/*"],
       "@store/*": ["store/*"],
       "@utils/*": ["utils/*"],
       "@components/*": ["components/*"],
@@ -36,3 +38,4 @@
   ],
   "compileOnSave": false
 }
+

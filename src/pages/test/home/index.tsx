@@ -12,6 +12,8 @@ import HomeStore from '@store/home'
 //import { Reducers } from '../../redux/interface'
 import { Text,View,Image,Button,Input } from '@tarojs/components'
 import FooterNav from '@components/FooterNav/FooterNav'
+import {Page} from '@ui-kit'
+
 
 /* import {
   setCurrentAddress,
@@ -115,9 +117,9 @@ const getSubCmpInfo = (msg) => {
 }
 
   return (
-    <View className='msite'>
-        {/* 内容区 */}
-        <View>
+    <Page className="msite" store={homeStore}>
+       {/* 内容区 */}
+       <View>
           {/* ip定位 */}
           <View>
             <Text className="msite-navbar-title">当前ip定位的地址:{homeStore.ipAddress.recommend}</Text>
@@ -156,7 +158,7 @@ const getSubCmpInfo = (msg) => {
         </View>
       {/* 底部导航 */}
       <FooterNav title="testname" callback = { getSubCmpInfo.bind(this) }/>
-    </View>
+    </Page>
   )
 }))
 

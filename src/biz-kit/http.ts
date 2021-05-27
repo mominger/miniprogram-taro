@@ -1,6 +1,9 @@
 //import config from './config';
 //import User from './user';
 //import I18 from './i18';
+import { request} from '@tarojs/taro'
+import {BASEURL } from '../config/index'
+
 
 interface IResult<T> {
   data: T | any;
@@ -10,75 +13,34 @@ interface IResult<T> {
 
 async function excute<T>({
   url,
-  method,
   data,
-  otherConfig,
-}: {
-  url: string;
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'JSON';
-  data?: any;
-  otherConfig?: any;
-}): Promise<IResult<T>> {
-  //let user = await User.getUser();
-  //const token = user?.token;
+  method = 'GET',
+  ...otherConfig
+}: Taro.RequestParams) {
   const token = '';
-  const body = JSON.stringify(data);
-  const abort = new AbortController();
-  const request = {
-    method,
-    headers: {
-      Accept: 'application/json; charset=utf-8',
-      'Content-Type': 'application/json',
-      credentials: 'omit',
-      token: token || '',
-      ...otherConfig,
-    },
-    body: method == 'GET' ? null : body,
-    signal: abort.signal,
-  };
-
-  const timeId = setTimeout(() => {
-    abort.abort();
-  }, 30 * 1000);
-
-  return new Promise<IResult<T>>((resolve, reject) => {
-    fetch(url, request)
-      .then(async (res) => {
-        clearTimeout(timeId);
-        return res.text();
+  return new Promise<Taro.request.SuccessCallbackResult>((resolve, reject) => {
+      request({
+        url: BASEURL + url,
+        data,
+        method,
+        header: {
+          accept: 'application/json; charset=utf-8',
+          'content-Type': 'application/json',
+          token: token || '',
+          ...otherConfig,
+        },
+        // 成功回调
+        success(result: Taro.request.SuccessCallbackResult): void {
+          debugger
+          const res = result.data;
+          resolve(res)
+        },
+        // 失败回调
+        fail(err: Taro.General.CallbackResult): void {
+          reject(err)
+        },
       })
-      .then((r) => {
-          console.log(`${url}`, request);
-          console.log('数据响应: ', r);
-
-        r = JSON.parse(r);
-        const res: any = r;
-
-        switch (res.result) {
-          case '000000':
-            resolve(res.data);
-            break;
-          case '000002':
-            //Toast.show(I18.t('http.loginTimeout'));
-            User.clean();
-
-            //todo: 导航到登录界面
-            //Nav.reset('Login');
-            break;
-          default:
-            //const error = I18.t(`errorCodes.${res.result}`) || res.error;
-            //Toast.show(error);
-            reject(res);
-        }
-      })
-      .catch((err) => {
-        clearTimeout(timeId);
-        console.error(`${url}`, request);
-        console.error(err);
-        reject({res: {}, err});
-        //Toast.show(I18.t('http.serverError'));
-      });
-  });
+    })
 }
 
 function createMethod<T>(type: 'GET' | 'POST' | 'PUT' | 'DELETE'): any {
