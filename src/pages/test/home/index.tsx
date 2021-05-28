@@ -9,8 +9,7 @@ import Log from '@biz-kit/log'
 import I18n from '@biz-kit/i18'
 import HomeStore from '@store/home'
 import { Text,View,Image,Button,Input } from '@tarojs/components'
-import FooterNav from '@components/FooterNav/FooterNav'
-import {Page} from '@ui-kit'
+import {Page,FooterNav} from '@ui-kit'
 import './index.scss'
 
 type IProps = {
@@ -58,7 +57,7 @@ const Index = inject('homeStore')(
 
   const handleToOther = useCallback(() => {
     Taro.navigateTo({
-      url: '/pages/other/index',
+      url: '/pages/test/other/index',
       events: {
         acceptDataFromOpenedPage: function(data) {
           console.log(data)
@@ -85,13 +84,13 @@ const Index = inject('homeStore')(
           success() {
             setTimeout(() => {
               Taro.hideLoading()
-              Taro.navigateTo({ url: '/pages/login/index' })
+              Taro.navigateTo({ url: '/pages/test/login/index' })
             }, 1000)
           }
         })
   },[])
   const handleVant = useCallback(() => {
-    Taro.navigateTo({ url: '/pages/testvant/index' })
+    Taro.navigateTo({ url: '/pages/test/testvant/index' })
   },[])
 
   //修改定位地址

@@ -15,21 +15,20 @@ const config = {
   defineConstants: {
   },
   alias: {
-    '@vant': path.resolve(__dirname, '../src/components/vant-weapp/dist'),
+    '@vant': path.resolve(__dirname, '../src/ui-kit/vant-weapp/dist'),
     '@biz-kit': path.resolve(__dirname, '../src/biz-kit'),
     '@ui-kit': path.resolve(__dirname, '../src/ui-kit'),
     '@store': path.resolve(__dirname, '../src/store'),
-    '@components': path.resolve(__dirname, '../src/components'),
   },
   copy: {
     patterns: [
-      { from: 'src/components/vant-weapp/dist/wxs', to: 'dist/components/vant-weapp/dist/wxs' },
-      { from: 'src/components/vant-weapp/dist/common/style', to: 'dist/components/vant-weapp/dist/common/style' },
-      { from: 'src/components/vant-weapp/dist/common/index.wxss', to: 'dist/components/vant-weapp/dist/common/index.wxss' },
-      { from: 'src/components/vant-weapp/dist/calendar/index.wxs', to: 'dist/components/vant-weapp/dist/calendar/index.wxs' },
-      { from: 'src/components/vant-weapp/dist/calendar/utils.wxs', to: 'dist/components/vant-weapp/dist/calendar/utils.wxs' },
-      { from: 'src/components/vant-weapp/dist/calendar/calendar.wxml', to: 'dist/components/vant-weapp/dist/calendar/calendar.wxml' },
-      { from: 'src/components/vant-weapp/dist/calendar/components/month/index.wxs', to: 'dist/components/vant-weapp/dist/calendar/components/month/index.wxs' },
+      { from: 'src/ui-kit/vant-weapp/dist/wxs', to: 'dist/ui-kit/vant-weapp/dist/wxs' },
+      { from: 'src/ui-kit/vant-weapp/dist/common/style', to: 'dist/ui-kit/vant-weapp/dist/common/style' },
+      { from: 'src/ui-kit/vant-weapp/dist/common/index.wxss', to: 'dist/ui-kit/vant-weapp/dist/common/index.wxss' },
+      { from: 'src/ui-kit/vant-weapp/dist/calendar/index.wxs', to: 'dist/ui-kit/vant-weapp/dist/calendar/index.wxs' },
+      { from: 'src/ui-kit/vant-weapp/dist/calendar/utils.wxs', to: 'dist/ui-kit/vant-weapp/dist/calendar/utils.wxs' },
+      { from: 'src/ui-kit/vant-weapp/dist/calendar/calendar.wxml', to: 'dist/ui-kit/vant-weapp/dist/calendar/calendar.wxml' },
+      { from: 'src/ui-kit/vant-weapp/dist/calendar/components/month/index.wxs', to: 'dist/ui-kit/vant-weapp/dist/calendar/components/month/index.wxs' },
     ],
     options: {
     }

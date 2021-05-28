@@ -12,7 +12,7 @@ import chatActiveIcon from './images/chat-selected.svg'
 import memeberIcon from './images/member.svg'
 import memberActiveIcon from './images/member-selected.svg'
 
-import './FooterNav.scss'
+import './index.scss'
 
 interface Bar {
   id: number

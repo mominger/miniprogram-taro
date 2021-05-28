@@ -27,8 +27,7 @@
       "@biz-kit/*": ["biz-kit/*"],
       "@ui-kit": ["ui-kit"],
       "@ui-kit/*": ["ui-kit/*"],
-      "@store/*": ["store/*"],
-      "@components/*": ["components/*"],
+      "@store/*": ["store/*"]
     },
   },
   "exclude": [

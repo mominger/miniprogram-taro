@@ -1,5 +1,5 @@
 import { request} from '@tarojs/taro'
-import {BASEURL } from '../config/index'
+import {BASEURL } from '@biz-kit/config/index'
 
 
 interface IResult<T> {

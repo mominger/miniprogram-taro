@@ -1,10 +1,10 @@
 export default {
   pages: [
     'pages/test/home/index',
-    /* 'pages/test/login/index',
+    //'pages/test/login/index',
     'pages/test/register/index',
     'pages/test/other/index',
-    'pages/test/testvant/index', */
+    'pages/test/testvant/index',
   ],
   window: {
     backgroundTextStyle: 'light',
