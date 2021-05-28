@@ -9,5 +9,5 @@ export type IpAddress = {
 }
 
 export const ipAddress = (): Promise<IpAddress> => {
-  return http.post(`/ip`, { key: 'UNZBZ-MJUKS-W76OY-6SGXP-7TIFE-AXBA3' });
+  return http.get(`/ip`, { key: 'UNZBZ-MJUKS-W76OY-6SGXP-7TIFE-AXBA3' });
 };

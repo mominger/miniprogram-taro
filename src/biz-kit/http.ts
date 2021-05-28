@@ -6,9 +6,9 @@ import {BASEURL } from '../config/index'
 
 
 interface IResult<T> {
-  data: T | any;
-  error: string;
-  result: string;
+  data: T | any;  //数据
+  error: string; //错误信息
+  code: string; //状态码
 }
 
 async function excute<T>({
@@ -18,7 +18,7 @@ async function excute<T>({
   ...otherConfig
 }: Taro.RequestParams) {
   const token = '';
-  return new Promise<Taro.request.SuccessCallbackResult>((resolve, reject) => {
+  return new Promise<IResult<T>>((resolve, reject) => {
       request({
         url: BASEURL + url,
         data,
@@ -33,10 +33,45 @@ async function excute<T>({
         success(result: Taro.request.SuccessCallbackResult): void {
           debugger
           const res = result.data;
-          resolve(res)
+
+
+          //如果不是200
+          const statusCode = result.statusCode;
+          if (statusCode !== 200){
+            switch (statusCode) {
+              case 401:
+                console.error("清空token,用户需登录");
+                break;
+              case 404:
+                console.error("找不到访问资源");
+                break;
+              case 500:
+                console.error("服务器繁忙");
+                break;
+              default:
+                console.error("服务器异常");
+            }
+            reject(res);
+            return;
+          }
+
+          //通用的异常处理
+          switch (res.code) {
+            case 0:
+              resolve(res.data);
+              break;
+            case 1:
+              console.error("登录过期，导航到登录界面");
+              break;
+            default:
+              //const error = I18.t(`errorCodes.${res.result}`) || res.error;
+              //Toast.show(error);
+              reject(res);
+          }
         },
         // 失败回调
         fail(err: Taro.General.CallbackResult): void {
+          console.error(err);
           reject(err)
         },
       })
