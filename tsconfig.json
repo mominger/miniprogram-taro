@@ -28,7 +28,6 @@
       "@ui-kit": ["ui-kit"],
       "@ui-kit/*": ["ui-kit/*"],
       "@store/*": ["store/*"],
-      "@utils/*": ["utils/*"],
       "@components/*": ["components/*"],
     },
   },

@@ -5,11 +5,11 @@ import React, { useEffect } from 'react'
 import {Provider} from 'mobx-react';
 import Store from './store';
 //import { initCurrentAddress } from './redux/actions/user'
-import Log from './utils/log'
+import Log from '@biz-kit/log';
 import './app.scss'
 
-//const store = configStore()
 
+//小程序异常统一捕获
 Taro.onError((msg) => {
   Log.error(msg)
 })

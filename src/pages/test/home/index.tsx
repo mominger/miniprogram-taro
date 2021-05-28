@@ -1,24 +1,16 @@
-// 首页
+
 import Taro from '@tarojs/taro'
 import React, { useEffect,useCallback} from 'react'
 import{useDidShow,useDidHide,useReady}from'@tarojs/taro'
 import {withErrorBoundary} from 'react-error-boundary'
-// import Log from '../../../utils/log'
-import Log from '@utils/log'
-import I18n from '@utils/i18'
 import {inject, observer} from 'mobx-react'
+
+import Log from '@biz-kit/log'
+import I18n from '@biz-kit/i18'
 import HomeStore from '@store/home'
-//import { useSelector,useDispatch } from 'react-redux'
-//import { Reducers } from '../../redux/interface'
 import { Text,View,Image,Button,Input } from '@tarojs/components'
 import FooterNav from '@components/FooterNav/FooterNav'
 import {Page} from '@ui-kit'
-
-
-/* import {
-  setCurrentAddress,
-} from '../../redux/actions/user' */
-
 import './index.scss'
 
 type IProps = {
@@ -162,7 +154,9 @@ const getSubCmpInfo = (msg) => {
   )
 }))
 
-const ErrorFallback = ({error, resetErrorBoundary}) => {
+//react组件异常统一捕获
+//todo: 需将异常组件剥离出去
+const ErrorFallback = ({error}) => {
   return (
     <View>
         Error:

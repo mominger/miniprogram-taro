@@ -7,7 +7,7 @@ import { InputProps } from '@tarojs/components/types/Input'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import { setToken,setEmail } from '../../redux/actions/user'
 import './index.scss'
-import util from '../../utils/util'
+import util from '@biz-kit/util'
 
 const Login = () => {
   const dispatch = useDispatch()

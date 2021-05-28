@@ -1,6 +1,3 @@
-//import config from './config';
-//import User from './user';
-//import I18 from './i18';
 import { request} from '@tarojs/taro'
 import {BASEURL } from '../config/index'
 
@@ -31,9 +28,7 @@ async function excute<T>({
         },
         // 成功回调
         success(result: Taro.request.SuccessCallbackResult): void {
-          debugger
           const res = result.data;
-
 
           //如果不是200
           const statusCode = result.statusCode;
