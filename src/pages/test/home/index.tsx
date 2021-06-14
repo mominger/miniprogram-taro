@@ -16,95 +16,28 @@ type IProps = {
   homeStore: HomeStore;
 };
 
-//const Index = (props) => {
 const Index = inject('homeStore')(
   observer((props: IProps) => {
-  console.info('....重新 Index render...')
   const {homeStore} = props;
+  console.info('....重新 Index render...props',props);
 
+  //测试国际化
   const chain = I18n.use();
   console.info("..name...",chain.home.name)
 
-  //const dispatch = useDispatch()
-
-  // 当前地址
-  /* const { currentAddress,email} = useSelector(
-    (state: Reducers) => state
-  ) */
-
-  console.info(props)
-
+  /** 生命周期一般只操作store */
   useReady(() => {
     console.log('Index page....onReady')
   })
   useDidShow(() => {
     console.log('Index page....componentDidShow')
-
-    let pages = Taro.getCurrentPages();
-    let currPage = pages[pages.length - 1]; // 获取当前页面
-    if (currPage.__data__.email) { // 获取值
-      console.info('...登录的邮箱:%s',currPage.__data__.email)
-    } 
   })
   useDidHide(() => {
     console.log('Index page....componentDidHide')
   })
 
-
-  //获取异步请求等
-  useEffect(() => {
-  }, [])
-
-  const handleToOther = useCallback(() => {
-    Taro.navigateTo({
-      url: '/pages/test/other/index',
-      events: {
-        acceptDataFromOpenedPage: function(data) {
-          console.log(data)
-        },
-        someEvent: function(data) {
-          console.log(data)
-        }
-      },
-      success: function (res) {
-        res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'testdata' })
-      }
-    })
-  },[])
-
-  const flushData = (data) => {
-    console.info('...flushData: '+data)
-  }
-
-  const handleLogin = useCallback(() => {
-    //set token after login in
-        Taro.showLoading({
-          title: '跳向登录页',
-          mask: true,
-          success() {
-            setTimeout(() => {
-              Taro.hideLoading()
-              Taro.navigateTo({ url: '/pages/test/login/index' })
-            }, 1000)
-          }
-        })
-  },[])
-  const handleVant = useCallback(() => {
-    Taro.navigateTo({ url: '/pages/test/testvant/index' })
-  },[])
-
-  //修改定位地址
-  const changeAddress = (value) => {
-    //更改定位地址
-    /* dispatch(
-      setCurrentAddress({
-        address: value
-      })
-    ) */
-  }
-
 const getSubCmpInfo = (msg) => {
-        console.info("...获取子组件的数据....%s ",msg)
+     console.info("...获取子组件的数据....%s ",msg)
 }
 
   return (
@@ -119,7 +52,7 @@ const getSubCmpInfo = (msg) => {
                 value={""}
                 placeholder='在这里修改定位地址'
                 className='item-right-input'
-                onInput={(e) => changeAddress(e.detail.value)}
+                onInput={(e) => console.info("...修改定位地址:",e.detail.value)}
               />
            </View>
 
@@ -131,15 +64,15 @@ const getSubCmpInfo = (msg) => {
             </View>
 
 
-            <Button onClick={handleToOther}>
+            <Button onClick={()=>Taro.navigateTo({ url: '/pages/test/other/index' })}>
               查询航班
           </Button>
 
-          <Button onClick={handleLogin}>
+          <Button onClick={()=>Taro.navigateTo({ url: '/pages/test/login/index' })}>
               模拟登录
           </Button>
           
-          <Button onClick={handleVant}>
+          <Button onClick={()=>Taro.navigateTo({ url: '/pages/test/testvant/index' })}>
               测试Vant基础组件
           </Button>
 
