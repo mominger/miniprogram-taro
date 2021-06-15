@@ -22,12 +22,12 @@ interface Bar {
   active_icon: string
 }
 
-interface FooterNavProps {
+type IProps = {
   title?: string
-  callback: (msg:string) => {}
-}
+  callback: (msg:string) => void
+};
 
-const FooterNav: FC<FooterNavProps> = (props) => {
+export default function FooterNav(props: IProps) {
   const {title,callback} = props
   console.info("..props title:%s",title)
 
@@ -120,4 +120,3 @@ const FooterNav: FC<FooterNavProps> = (props) => {
     </View>
   )
 }
-export default FooterNav

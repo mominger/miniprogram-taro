@@ -1,6 +1,6 @@
 
 import Taro from '@tarojs/taro'
-import React, { useEffect,useCallback} from 'react'
+import React from 'react'
 import{useDidShow,useDidHide,useReady}from'@tarojs/taro'
 import {inject, observer} from 'mobx-react'
 
@@ -34,9 +34,10 @@ const Index = inject('homeStore')(
     console.log('Index page....componentDidHide')
   })
 
-const getSubCmpInfo = (msg) => {
-     console.info("...获取子组件的数据....%s ",msg)
-}
+  //测试子组件通信数据:1. 传递function  
+  const getSubCmpInfo = (msg: string) => {
+      console.info("...获取子组件的数据....%s ",msg);
+  }
 
   return (
     <Page className="msite" store={homeStore}>
@@ -77,9 +78,10 @@ const getSubCmpInfo = (msg) => {
           <View className="email-data">
             <Text>登录后获取的email: {}</Text>
           </View>
+
         </View>
       {/* 底部导航 */}
-      <FooterNav title="testname" callback = { getSubCmpInfo.bind(this) }/>
+      <FooterNav title="testname" callback = { getSubCmpInfo }/>
     </Page>
   )
 }))

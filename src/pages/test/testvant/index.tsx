@@ -1,49 +1,36 @@
 import React, { useState,useCallback } from 'react'
+import {inject, observer} from 'mobx-react'
 import { View, Text, Slot } from '@tarojs/components'
+import TestVantStore from '@store/testvant'
 import './index.scss'
 
-const TestVant = () => {
+type IProps = {
+  testVantStore: TestVantStore;
+};
 
-  const [show, setShow] = useState(false)
-  const [endDate, setEndDate] = useState('')
-
-  const showCalendar = useCallback(() => {
-    setShow(true)
-  },[])
-
-  const formatDate = (date)=>{
-      date = new Date(date)
-      return `${date.getMonth() + 1}/${date.getDate()}`
-  }
-
-  const closeCalendar = useCallback(() => {
-    setShow(false)
-  },[])
-
-  const onConfirm = useCallback((event) => {
-    setShow(false)
-    setEndDate(formatDate(event.detail[1]))
-  },[])
+const TestVant = inject('testVantStore')(
+  observer((props: IProps) => {
+  const {testVantStore: store} = props; 
 
   return (
     <View className='index'>
-      <van-button type='primary' onClick={showCalendar}>显示日历</van-button>
+      <van-button type='primary' onClick={store.showCalendar}>显示日历</van-button>
       <van-calendar
-        show={show}
+        show={store.show}
         showConfirm
         type='range'
-        onClose={closeCalendar}
-        onConfirm={onConfirm}
+        onClose={store.closeCalendar}
+        onConfirm={store.onConfirm}
         >
         <Slot name='title'>
           <View>选择日期</View>
         </Slot>
       </van-calendar>
       <View>
-        endDate: {endDate}
+        endDate: {store.endDate}
       </View>
     </View>
   )
-}
+}))
 
 export default TestVant

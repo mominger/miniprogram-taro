@@ -1,11 +1,8 @@
-import Taro, {useRouter} from '@tarojs/taro'
-import React, { useState, useCallback, useMemo } from 'react'
+import React from 'react'
 import { View} from '@tarojs/components'
 import './index.scss'
 
 const Other = () => {
-  
-
   return (
     <View className='register'>
       <View>this is other page</View>
