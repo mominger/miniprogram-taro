@@ -2,14 +2,12 @@
 import Taro from '@tarojs/taro'
 import React, { useEffect,useCallback} from 'react'
 import{useDidShow,useDidHide,useReady}from'@tarojs/taro'
-import {withErrorBoundary} from 'react-error-boundary'
 import {inject, observer} from 'mobx-react'
 
-import Log from '@biz-kit/log'
 import I18n from '@biz-kit/i18'
 import HomeStore from '@store/home'
 import { Text,View,Image,Button,Input } from '@tarojs/components'
-import {Page,FooterNav} from '@ui-kit'
+import {Page,FooterNav,withError} from '@ui-kit'
 import './index.scss'
 
 type IProps = {
@@ -86,24 +84,4 @@ const getSubCmpInfo = (msg) => {
   )
 }))
 
-//react组件异常统一捕获
-//todo: 需将异常组件剥离出去
-const ErrorFallback = ({error}) => {
-  return (
-    <View>
-        Error:
-        <View>
-          {error.message}
-        </View>
-    </View>
-  )
-}
-
-const ComponentWithErrorBoundary = withErrorBoundary(Index, {
-  FallbackComponent: ErrorFallback,
-  onError(error, info) {
-    Log.error(error  + info.componentStack)
-  },
-})
-
-export default ComponentWithErrorBoundary
+export default withError(Index);
