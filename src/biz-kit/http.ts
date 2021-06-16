@@ -1,5 +1,6 @@
 import { request} from '@tarojs/taro'
 import {BASEURL } from '@biz-kit/config/index'
+import Toast from './toast';
 
 
 interface IResult<T> {
@@ -35,16 +36,16 @@ async function excute<T>({
           if (statusCode !== 200){
             switch (statusCode) {
               case 401:
-                console.error("清空token,用户需登录");
+                Toast.show("清空token,用户需登录");
                 break;
               case 404:
-                console.error("找不到访问资源");
+                Toast.show("找不到访问资源");
                 break;
               case 500:
-                console.error("服务器繁忙");
+                Toast.show('服务器繁忙');
                 break;
               default:
-                console.error("服务器异常");
+                Toast.show("服务器异常");
             }
             reject(res);
             return;
@@ -56,17 +57,17 @@ async function excute<T>({
               resolve(res.data);
               break;
             case 1:
-              console.error("登录过期，导航到登录界面");
+              Toast.show('登录过期,需重新登录');
               break;
             default:
               //const error = I18.t(`errorCodes.${res.result}`) || res.error;
-              //Toast.show(error);
+              Toast.show('登录过期,需重新登录');
               reject(res);
           }
         },
         // 失败回调
         fail(err: Taro.General.CallbackResult): void {
-          console.error(err);
+          Toast.show('网络异常');
           reject(err)
         },
       })
