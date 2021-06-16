@@ -1,18 +1,29 @@
-import {IFormStore, IPageStore} from '@store/types';
-import {action, observable, makeObservable} from 'mobx';
-import {Nav, User} from '@biz-kit';
-import AsyncStorage from '@react-native-community/async-storage';
+import {IPageStore} from '@store/types';
+import {action, observable} from 'mobx';
 import * as Api from './api';
+import {User,Nav} from '@biz-kit';
 
-export default class LoginStore implements IPageStore, IFormStore {
+export default class LoginStore implements IPageStore {
   @observable param = {
     email: '',
     password: '',
   };
 
-  constructor() {
-    makeObservable(this);
-  }
+  @action
+  login = async () => {
+    //todo: 假设登录成功
+    //const data = await Api.login(this.param);
+    
+    User.setUser({
+      id:   Math.random()*1000000,
+      name: this.param.email,
+      email: this.param.email,
+      token: 'token_'+this.param.email+Math.random()*10000000,
+    });
+    
+    //登录之后跳到首页
+    Nav.reLaunch({url:'/pages/test/home/index'});
+  };
 
   @action
   onFormItemChange = (name: string, value: any) => {
@@ -20,18 +31,10 @@ export default class LoginStore implements IPageStore, IFormStore {
   };
 
   @action
-  onLoad = () => {
-    this.param = {
-      email: '',
-      password: '',
-    };
+  onLoad = async () => {
   };
 
   @action
-  login = async () => {
-    const data = await Api.login(this.param);
-    User.setUser(data);
-    await AsyncStorage.setItem('user', JSON.stringify(data));
-    Nav.reset('Index');
+  onUnload = () => {
   };
 }

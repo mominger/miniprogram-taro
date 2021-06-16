@@ -1,5 +1,6 @@
 import HomeStore from './home';
 import TestVantStore from './testvant';
+import LoginStore from './login';
 import {configure} from 'mobx';
 
 configure({
@@ -9,6 +10,7 @@ configure({
 const store = {
   homeStore: new HomeStore(),
   testVantStore: new TestVantStore(),
+  loginStore: new LoginStore(),
 };
 
 export default store;

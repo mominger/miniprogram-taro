@@ -2,6 +2,7 @@ import Taro, { useDidShow,useDidHide,useReady,useResize,getCurrentInstance } fro
 import React, { FC, useState, useEffect } from 'react'
 import { View, Image } from '@tarojs/components'
 import classnames from 'classnames'
+import {I18,Nav} from '@biz-kit'
 
 import homeIcon from './images/logo-a.svg'
 import homeActiveIcon from './images/logo-a-selected.svg'
@@ -58,21 +59,21 @@ export default function FooterNav(props: IProps) {
     {
       id: 1,
       name: '我的预订',
-      path: '',
+      path: '/pages/test/other/index',
       icon: bookingIcon,
       active_icon: bookingActiveIcon,
     },
     {
       id: 2,
       name: '在线客服',
-      path: '',
+      path: '/pages/test/other/index',
       icon: chatIcon,
       active_icon: chatActiveIcon,
     },
     {
       id: 3,
       name: '会员',
-      path: '',
+      path: '/pages/test/other/index',
       icon: memeberIcon,
       active_icon: memberActiveIcon,
     },
@@ -87,9 +88,7 @@ export default function FooterNav(props: IProps) {
   // 跳转到bar对应页面
   const handleGo = (bar: Bar) => {
     callback("本次跳转的地址: "+bar.path)
-    debugger
-
-    Taro.reLaunch({
+    Nav.reLaunch({
       url: bar.path,
     })
   }

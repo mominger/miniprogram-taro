@@ -4,7 +4,7 @@ import React from 'react'
 import{useDidShow,useDidHide,useReady}from'@tarojs/taro'
 import {inject, observer} from 'mobx-react'
 
-import I18n from '@biz-kit/i18'
+import {I18,Nav} from '@biz-kit'
 import HomeStore from '@store/home'
 import { Text,View,Image,Button,Input } from '@tarojs/components'
 import {Page,FooterNav,withError} from '@ui-kit'
@@ -20,7 +20,7 @@ const Index = inject('homeStore')(
   console.info('....重新 Index render...props',props);
 
   //测试国际化
-  const chain = I18n.use();
+  const chain = I18.use();
   console.info("..name...",chain.home.name)
 
   /** 生命周期一般只操作store */
@@ -63,21 +63,17 @@ const Index = inject('homeStore')(
             </View>
 
 
-            <Button onClick={()=>Taro.navigateTo({ url: '/pages/test/other/index' })}>
+            <Button onClick={()=>Nav.navigateTo({ url: '/pages/test/other/index' })}>
               查询航班
           </Button>
 
-          <Button onClick={()=>Taro.navigateTo({ url: '/pages/test/login/index' })}>
+          <Button onClick={()=>Nav.navigateTo({ url: '/pages/test/login/index' })}>
               模拟登录
           </Button>
           
-          <Button onClick={()=>Taro.navigateTo({ url: '/pages/test/testvant/index' })}>
+          <Button onClick={()=>Nav.navigateTo({ url: '/pages/test/testvant/index' })}>
               测试Vant基础组件
           </Button>
-
-          <View className="email-data">
-            <Text>登录后获取的email: {}</Text>
-          </View>
 
         </View>
       {/* 底部导航 */}

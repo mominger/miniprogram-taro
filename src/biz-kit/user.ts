@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import Storage from '@biz-kit/storage';
 
 let user: U = null;
 
@@ -14,30 +14,23 @@ type U = {
  */
 export default {
   //
-  async getUser(): Promise<U> {
+  getUser(): U {
     if (user == null) {
-      const us = await AsyncStorage.getItem('user');
+      const us = Storage.getItem('user');
       if (us) {
         user = JSON.parse(us);
-        initSentry();
-        initSocket();
       }
     }
     return user;
   },
 
   //
-  async setUser(u: U) {
+  setUser(u: U) {
     user = u;
-    await AsyncStorage.setItem('user', JSON.stringify(u));
-    initSentry();
-    initSocket();
+    Storage.setItem('user', JSON.stringify(u));
   },
 
-  async clean() {
-    await AsyncStorage.removeItem('user');
-    if (socket) {
-      socket.close();
-    }
+  clean() {
+    Storage.removeItem('user');
   },
 };
