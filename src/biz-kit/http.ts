@@ -1,6 +1,7 @@
 import { request} from '@tarojs/taro'
 import Config from '@biz-kit/config/index'
 import Toast from './toast';
+import { User } from '@biz-kit';
 
 
 interface IResult<T> {
@@ -15,7 +16,7 @@ function excute<T>({
   method = 'GET',
   ...otherConfig
 }: Taro.RequestParams) : Promise<IResult<T>> {
-  const token = '';
+  const token = User.getUser()?.token;
   return new Promise<IResult<T>>((resolve, reject) => {
       request({
         url,
@@ -31,7 +32,7 @@ function excute<T>({
         success(result: Taro.request.SuccessCallbackResult): void {
           const res = result.data;
 
-          //如果不是200
+          //状态码处理
           const statusCode = result.statusCode;
           if (statusCode !== 200){
             switch (statusCode) {
@@ -51,7 +52,7 @@ function excute<T>({
             return;
           }
 
-          //通用的异常处理
+          //异常码处理
           switch (res.code) {
             case 0:
               resolve(res.data);

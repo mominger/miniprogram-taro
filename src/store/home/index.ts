@@ -1,5 +1,5 @@
-import {IListStore, IPageStore} from '@store/types';
-import {action, observable, runInAction} from 'mobx';
+import {IPageStore} from '@store/types';
+import {action, observable} from 'mobx';
 import * as Api from './api';
 
 export default class HomeStore implements IPageStore {
