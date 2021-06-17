@@ -1,10 +1,10 @@
 
 import Taro from '@tarojs/taro'
-import React from 'react'
+import React,{useCallback, useEffect} from 'react'
 import{useDidShow,useDidHide,useReady}from'@tarojs/taro'
 import {inject, observer} from 'mobx-react'
 
-import {I18,Nav} from '@biz-kit'
+import {I18,Nav,http} from '@biz-kit'
 import HomeStore from '@store/home'
 import { Text,View,Image,Button,Input } from '@tarojs/components'
 import {Page,FooterNav,withError} from '@ui-kit'
@@ -16,15 +16,16 @@ type IProps = {
 
 const Index = inject('homeStore')(
   observer((props: IProps) => {
-  const {homeStore} = props;
-  console.info('....重新 Index render...props',props);
+
+  const {homeStore: store} = props;
+  console.info("..渲染了 home page ....");
 
   //测试国际化
   const chain = I18.use();
-  console.info("..name...",chain.home.name)
+  console.info("..测试国际化 name...",chain.home.name)
 
-  /** 生命周期一般只操作store */
-  useReady(() => {
+  /** 测试小程序页面生命周期 */
+  /* useReady(() => {
     console.log('Index page....onReady')
   })
   useDidShow(() => {
@@ -32,20 +33,29 @@ const Index = inject('homeStore')(
   })
   useDidHide(() => {
     console.log('Index page....componentDidHide')
-  })
+  }) */
 
-  //测试子组件通信数据:1. 传递function  
-  const getSubCmpInfo = (msg: string) => {
+  //测试子组件通信数据:1. 传递function  2.传递store,action更改数据 
+  const getSubCmpInfo = useCallback((msg: string) => {
       console.info("...获取子组件的数据....%s ",msg);
-  }
+  },[])
+
+  useEffect(() => {
+    let timeId = setTimeout(()=>{
+      store.setName('这是首页');
+    },3000)
+    return ()=>{
+      clearTimeout(timeId)
+    }
+  }, [])
 
   return (
-    <Page className="msite" store={homeStore}>
+    <Page className="home" store={store}>
        {/* 内容区 */}
        <View>
           {/* ip定位 */}
           <View>
-            <Text className="msite-navbar-title">当前ip定位的地址:{homeStore.ipAddress.recommend}</Text>
+            <Text className="home-navbar-title">当前ip定位的地址:{store.ipAddress.city}</Text>
             <View>
               <Input
                 value={""}
@@ -75,6 +85,13 @@ const Index = inject('homeStore')(
               测试Vant基础组件
           </Button>
 
+
+          <View>
+            <Text>
+              '测试的name: '{store.name}
+            </Text>
+          </View>
+
         </View>
       {/* 底部导航 */}
       <FooterNav title="testname" callback = { getSubCmpInfo }/>
@@ -82,4 +99,4 @@ const Index = inject('homeStore')(
   )
 }))
 
-export default withError(Index);
+export default Index;

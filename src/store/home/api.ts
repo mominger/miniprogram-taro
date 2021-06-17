@@ -8,6 +8,6 @@ export type IpAddress = {
   recommend?: string;
 }
 
-export const ipAddress = (): Promise<IpAddress> => {
+export const ipAddress = async (): Promise<IpAddress> => {
   return http.get(`/ip`, { key: 'UNZBZ-MJUKS-W76OY-6SGXP-7TIFE-AXBA3' });
 };

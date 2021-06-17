@@ -9,16 +9,16 @@ interface IResult<T> {
   code: string; //状态码
 }
 
-async function excute<T>({
+function excute<T>({
   url,
   data,
   method = 'GET',
   ...otherConfig
-}: Taro.RequestParams) {
+}: Taro.RequestParams) : Promise<IResult<T>> {
   const token = '';
   return new Promise<IResult<T>>((resolve, reject) => {
       request({
-        url: BASEURL + url,
+        url,
         data,
         method,
         header: {
@@ -58,6 +58,7 @@ async function excute<T>({
               break;
             case 1:
               Toast.show('登录过期,需重新登录');
+              reject(res);
               break;
             default:
               //const error = I18.t(`errorCodes.${res.result}`) || res.error;
@@ -76,6 +77,7 @@ async function excute<T>({
 
 function createMethod<T>(type: 'GET' | 'POST' | 'PUT' | 'DELETE'): any {
   return async (url: string, data?: object, otherConfig?: object) => {
+    url = BASEURL + url;
     return await excute<T>({
       url,
       method: type,

@@ -1,5 +1,5 @@
 import Taro, { useDidShow,useDidHide,useReady,useResize,getCurrentInstance } from '@tarojs/taro'
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, memo } from 'react'
 import { View, Image } from '@tarojs/components'
 import classnames from 'classnames'
 import {I18,Nav} from '@biz-kit'
@@ -28,11 +28,12 @@ type IProps = {
   callback: (msg:string) => void
 };
 
-export default function FooterNav(props: IProps) {
+const FooterNav = (props: IProps) => {
   const {title,callback} = props
-  console.info("..props title:%s",title)
+  console.info("..渲染了 FooterNav ....");
 
-  useReady(() => {
+  //测试小程序组件渲染周期
+  /* useReady(() => {
     console.log('component FooterNav....onReady')
   })
   useResize(() => {
@@ -43,7 +44,7 @@ export default function FooterNav(props: IProps) {
   })
   useDidHide(() => {
     console.log('component FooterNav....componentDidHide')
-  })
+  }) */
 
 
   // 路由地址
@@ -79,11 +80,11 @@ export default function FooterNav(props: IProps) {
     },
   ]
 
-  useEffect(() => {
+  /* useEffect(() => {
     // 获取路由路径
     const current: Taro.Current = getCurrentInstance()
     setPath(current.router.path)
-  }, [])
+  }, []) */
 
   // 跳转到bar对应页面
   const handleGo = (bar: Bar) => {
@@ -119,3 +120,5 @@ export default function FooterNav(props: IProps) {
     </View>
   )
 }
+
+export default memo(FooterNav);
