@@ -15,14 +15,6 @@ Taro.onError((msg) => {
 })
 
 const App = (props) => {
-  //初始化通过ip获取定位地址
-  /* useEffect(() => {
-    const { currentAddress } = store.getState()
-    if (!currentAddress.latitude && !currentAddress.longitude) {
-      store.dispatch<any>(initCurrentAddress())
-    }
-  }, []) */
-
   return <Provider {...Store}>{props.children}</Provider>
 }
 
