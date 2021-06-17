@@ -1,5 +1,5 @@
 import { request} from '@tarojs/taro'
-import {BASEURL } from '@biz-kit/config/index'
+import Config from '@biz-kit/config/index'
 import Toast from './toast';
 
 
@@ -77,7 +77,7 @@ function excute<T>({
 
 function createMethod<T>(type: 'GET' | 'POST' | 'PUT' | 'DELETE'): any {
   return async (url: string, data?: object, otherConfig?: object) => {
-    url = BASEURL + url;
+    url = Config.BASEURL + url;
     return await excute<T>({
       url,
       method: type,
