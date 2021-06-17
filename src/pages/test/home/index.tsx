@@ -4,7 +4,7 @@ import React,{useCallback, useEffect} from 'react'
 import{useDidShow,useDidHide,useReady}from'@tarojs/taro'
 import {inject, observer} from 'mobx-react'
 
-import {I18,Nav,http} from '@biz-kit'
+import {I18,Nav} from '@biz-kit'
 import HomeStore from '@store/home'
 import { Text,View,Image,Button,Input } from '@tarojs/components'
 import {Page,FooterNav,withError} from '@ui-kit'
@@ -99,4 +99,4 @@ const Index = inject('homeStore')(
   )
 }))
 
-export default Index;
+export default withError(Index);

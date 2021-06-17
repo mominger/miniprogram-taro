@@ -1,5 +1,5 @@
 import {IPageStore} from '@store/types';
-import {action, observable} from 'mobx';
+import {action, observable, computed} from 'mobx';
 import * as Api from './api';
 
 export default class HomeStore implements IPageStore {
@@ -15,6 +15,11 @@ export default class HomeStore implements IPageStore {
   setName = (name: string) => {
     this.name = name;
   }
+
+  /* @computed
+  get fullName() {
+    return this.ipAddress.city + this.name
+  } */
 
   @action
   onUnload = () => {
